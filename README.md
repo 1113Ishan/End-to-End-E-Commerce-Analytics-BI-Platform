@@ -173,5 +173,5 @@ This project demonstrates the ability to:
 
 
 <img width="1212" height="682" alt="image" src="https://github.com/user-attachments/assets/e72def8c-ba0f-43fe-8362-c18f4567965e" />
-<img width="1215" height="688" alt="image" src="https://github.com/user-attachments/assets/7d6fb38b-6616-41d4-a610-e4ad7c8ae1dc" />
+<img width="1215" height="682" alt="image" src="https://github.com/user-attachments/assets/80ba8fdd-9ac1-48c1-accc-454063d1027b" />
 
