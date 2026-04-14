@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a **production-style, end-to-end data analytics solution** built using the Brazilian Olist e-commerce dataset. It simulates how a data analyst supports business decision-making by transforming raw transactional data into **actionable insights and executive dashboards**.
+This project is a **production-style, end-to-end data analytics solution** built using the Brazilian Olist e-commerce dataset.**
 
 The project focuses on solving core business problems across three critical areas:
 
