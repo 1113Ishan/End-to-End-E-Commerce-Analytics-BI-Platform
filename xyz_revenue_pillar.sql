@@ -169,7 +169,7 @@ select  count(*) from products_dataset;
  * i.e products that are selling and products that are just sitting there in the inventory
  */
 
-
+create view product_order_frequency as
 SELECT 
     CASE 
         WHEN total_orders = 1 THEN 'Single Order Products'
@@ -243,6 +243,48 @@ create view customer_spending_pattern as
     END AS spend_segment
 from customer_performance;
 
+/*
+ * Working on operation pillar
+ * 1. delivery performance (delays, actual deliveries, estimated deliveries)
+ */
 
+CREATE VIEW delivery_performance AS
+SELECT 
+    order_id,
+    customer_id,
+    DATE_PART(
+        'day', 
+        NULLIF(order_delivered_customer_date, '')::timestamp 
+        - order_purchase_timestamp::timestamp
+    ) AS actual_delivery_days,
+    DATE_PART(
+        'day', 
+        NULLIF(order_estimated_delivery_date, '')::timestamp 
+        - order_purchase_timestamp::timestamp
+    ) AS estimated_delivery_days,
+    DATE_PART(
+        'day', 
+        NULLIF(order_delivered_customer_date, '')::timestamp 
+        - NULLIF(order_estimated_delivery_date, '')::timestamp
+    ) AS delay_days
+FROM orders_dataset
+WHERE order_status = 'delivered';
+
+create view delivery_time as
+select 
+	case
+		when delay_days < 0 then 'Early delivery'
+		when delay_days = 0 then 'On time delivery'
+		else 'Late delivery'
+	end as delivery_status,
+	count(*) as total_orders
+from delivery_performance
+group by 1
+order by total_orders desc;
+
+
+	
+	
+	
 
 
